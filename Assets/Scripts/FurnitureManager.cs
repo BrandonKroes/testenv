@@ -38,7 +38,7 @@ public class FurnitureManager : SingletonMonoBehaviour<FurnitureManager>
     {
         this.furnitures = new Dictionary<string, List<Furniture>>();
 
-        Fill();
+        DummyContent();
         FurnitureCategories();
         FurnitureItems();
         //showAllSubMenuItems();
@@ -53,7 +53,7 @@ public class FurnitureManager : SingletonMonoBehaviour<FurnitureManager>
         {
             var button = Instantiate(category_prefab);
             button.name = furniture_category.Key;
-            button.transform.SetParent(categoryMenu.transform,false);
+            button.transform.SetParent(categoryMenu.transform, false);
             button.GetComponentInChildren<TextMeshProUGUI>().text = furniture_category.Key;
             button.GetComponent<RectTransform>().sizeDelta = new Vector2(5f, 3f);
             button.SetActive(true);
@@ -69,173 +69,90 @@ public class FurnitureManager : SingletonMonoBehaviour<FurnitureManager>
                 print(furniture.getSlugName());
                 var button = Instantiate(submenu_prefab);
                 button.name = furniture.getSlugName();
-                button.transform.SetParent(subMenu.transform,false);
+                button.transform.SetParent(subMenu.transform, false);
                 button.GetComponentInChildren<TextMeshProUGUI>().text = furniture.getSlugName();
                 button.GetComponent<RectTransform>().sizeDelta = new Vector2(5f, 3f);
                 button.SetActive(true);
+                button.AddComponent<CategoryButton>();
             }
         }
     }
 
-
-    public void subMenuChoices()
+    public void DeleteFurnitureItems(GameObject obj)
     {
-        RemoveSubMenuChoices();
-        var result = new List<Furniture>();
-        this.furnitures.TryGetValue(this.activeCategory, out result);
-        foreach (var furniture in result)
+        foreach (Transform child in obj.transform)
         {
-            var button = Instantiate(submenu_prefab);
-            button.GetComponentInChildren<TextMeshProUGUI>().text = furniture.getSlugName();
-            button.SetActive(true);
+            GameObject.Destroy(child.gameObject);
         }
     }
 
-    public void RemoveSubMenuChoices()
-    {
-        Transform[] ts = categoryMenu.GetComponentsInChildren<Transform>();
-
-        foreach (var result in ts)
-        {
-            if (result.parent == categoryMenu.transform && result.gameObject.name != this.activeCategory)
-            {
-                result.gameObject.SetActive(false);
-            }
-        }
-    }
-
-    public void HideMenuItemsExcept(string activeCategory)
-    {
-        if (this.furnitures.Keys.Contains(activeCategory))
-        {
-            if (activeCategory == this.activeCategory)
-            {
-                showAllSubMenuItems();
-            }
-
-            this.activeCategory = activeCategory;
-            subMenuChoices();
-        }
-    }
-
-    private void showAllSubMenuItems()
-    {
-        Transform[] ts = categoryMenu.GetComponentsInChildren<Transform>(true);
-
-        foreach (var result in ts)
-        {
-            if (result.parent == categoryMenu.transform)
-            {
-                result.gameObject.SetActive(true);
-            }
-        }
-
-        hideAllMenuFurniture();
-    }
-
-    private void hideAllMenuFurniture()
-    {
-        Transform[] ts = subMenu.GetComponentsInChildren<Transform>();
-
-        foreach (var result in ts)
-        {
-            if (result.parent == subMenu.transform)
-            {
-                Destroy(result.gameObject);
-            }
-        }
-    }
-
-    public void CreateSubMenus()
-    {
-        foreach (var furniture_category in this.furnitures)
-        {
-            var button = Instantiate(category_prefab);
-
-
-            //button.GetComponent<Button>().onClick.AddListener(method);
-
-            //InputHelpers.Button b = button.GetComponent<InputHelpers.Button>();
-            //b.onClick.AddListener(delegate
-            //{
-            //    FurnitureManager.Instance.HideMenuItemsExcept(furniture_category.Key);
-            //}); 
-
-            button.name = furniture_category.Key; //GetComponentInChildren<TextMeshPro>().text = furniture_category.Key;
-            button.SetActive(true);
-        }
-    }
-
-
-    public void TaskOnClick()
-    {
-        print("TaskOnClick");
-    }
-
-
-    /*
-    void GetFurniture(Furniture furniture)
-    {
-
-        if (furniture.rQType == ) { }
-        
-            
-            var x = new OBJRequest("https://brandonkroes.com/MMS/drawer/IKEA-Alex_drawer_white-3D.obj",,
-                "IKEA-Alex_drawer_white-3DMTL");
-        x.ExecuteRequest(_monoBehaviour);
-
-        AssetManager.Instance.GetAsset()
-
-        OBJRequestCoroutine.GetRequest(
-            new OBJRequest(
-                item.getUrl(),
-                item.getSlugName()
-                ))
-    }
-
-    */
-    // Update is called once per frame
-    void Update()
-    {
-    }
 
     //Fill data for testing
-    public void Fill()
+    public void DummyContent()
     {
         Status s = Status.TOBEDOWNLOADNED;
 
-        Furniture bed1 = new Furniture("IKEA-Alex_drawer_white-3D", "https", s);
-        Furniture bed2 = new Furniture("Rashid_bed", "https", s);
-
-        Furniture drawer1 = new Furniture("Setki_Drawer", "https", s);
-        Furniture drawer2 = new Furniture("Setki_Drawer", "https", s);
-
-        Furniture door1 = new Furniture("Brandon_door", "https", s);
-        Furniture door2 = new Furniture("Brandon_door", "https", s);
-
-        List<Furniture> beds = new List<Furniture>()
-        {
-            bed1,
-            bed2
-        };
-
-        List<Furniture> drawers = new List<Furniture>()
-        {
-            drawer1,
-            drawer2
-        };
-
-        List<Furniture> doors = new List<Furniture>()
-        {
-            door1,
-            door2
-        };
-
         furnitures = new Dictionary<string, List<Furniture>>()
         {
-            { "Bed", beds },
-            { "Drawers", drawers },
-            { "Doors", doors }
+            {
+                "Beds", new List<Furniture>()
+                {
+                    new Furniture("Hopen", "https://brandonkroes.com/MMS/beds/IKEA-Hopen_Bed_160-3D.obj", s),
+                    new Furniture("Sorum Queen Bed",
+                        "https://brandonkroes.com/MMS/beds/IKEA-Sorum_Queen_Bed_Frame-3D.obj", s),
+                    new Furniture("Hemnes",
+                        "https://brandonkroes.com/MMS/beds/https://brandonkroes.com/MMS/beds/Hemnes%20Bed.obj", s),
+                    new Furniture("Aspelund", "https://brandonkroes.com/MMS/beds/IKEA-Aspelund_Double_Bed-3D.obj", s),
+                    new Furniture("Grankulla",
+                        "https://brandonkroes.com/MMS/beds/IKEA-Grankulla_Futon_Single_Bed-3D.obj", s),
+                }
+            } /* ,
+            {
+                "Drawers", new List<Furniture>()
+                {
+                    new Furniture("Alex Small", "IKEA-Alex_drawer_white-3D.obj", s),
+                    new Furniture("Alex Small", "IKEA-Alex_drawer_white-3D.obj", s),
+                    new Furniture("Alex Small", "IKEA-Alex_drawer_white-3D.obj", s),
+                    new Furniture("Alex Small", "IKEA-Alex_drawer_white-3D.obj", s),
+                    new Furniture("Alex Small", "IKEA-Alex_drawer_white-3D.obj", s)
+                }
+            } ,
+            {
+                "Wardrobe", new List<Furniture>()
+                {
+                    new Furniture("Alex Small", "IKEA-Alex_drawer_white-3D.obj", s),
+                    new Furniture("Alex Small", "IKEA-Alex_drawer_white-3D.obj", s),
+                    new Furniture("Alex Small", "IKEA-Alex_drawer_white-3D.obj", s),
+                    new Furniture("Alex Small", "IKEA-Alex_drawer_white-3D.obj", s),
+                    new Furniture("Alex Small", "IKEA-Alex_drawer_white-3D.obj", s)
+                }
+            },
+            {
+                "Tables", new List<Furniture>()
+                {
+                    new Furniture("Alex Small", "IKEA-Alex_drawer_white-3D.obj", s),
+                    new Furniture("Alex Small", "IKEA-Alex_drawer_white-3D.obj", s),
+                    new Furniture("Alex Small", "IKEA-Alex_drawer_white-3D.obj", s),
+                    new Furniture("Alex Small", "IKEA-Alex_drawer_white-3D.obj", s),
+                    new Furniture("Alex Small", "IKEA-Alex_drawer_white-3D.obj", s)
+                }
+            }, */
         };
+    }
+
+    public Furniture GetFurnitureBySlug(string slug)
+    {
+        foreach (var furniture_category in this.furnitures)
+        {
+            foreach (var furniture in furniture_category.Value)
+            {
+                if (furniture.getSlugName() == slug)
+                {
+                    return furniture;
+                }
+            }
+        }
+
+        return new Furniture("", "", Status.TOBEDOWNLOADNED);
     }
 }

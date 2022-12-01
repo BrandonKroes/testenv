@@ -54,8 +54,6 @@ public class PlayerController : MonoBehaviour
         else
             currMoveSpeed = MoveSpeed;
 
-        if (Input.GetKeyUp(KeyCode.O)) AssetManager.Instance.GetBed();
-
         direction += velocity * Time.deltaTime;
         movementController.Move(direction * (Time.deltaTime * currMoveSpeed));
 

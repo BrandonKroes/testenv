@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Script.Coroutine;
 using Script.Generics;
+using UnityEditor.DeviceSimulation;
 using UnityEngine;
 
 namespace Script
@@ -11,40 +12,19 @@ namespace Script
         public GameObject sceneInstantiator;
         private Dictionary<string, IAssetRequest> _assets;
         private MonoBehaviour _monoBehaviour;
+        private List<string> _outstanding_requests;
 
 
         private void Start()
         {
             _monoBehaviour = GetComponent<MonoBehaviour>();
             _assets = new Dictionary<string, IAssetRequest>();
-
-
-            
+            _outstanding_requests = new List<string>();
         }
 
-
-
-
-
-        // TODO: Remove example code
-        public void GetDrawer()
+        public void GetAsset(IAssetRequest request)
         {
-            StartCoroutine(OBJRequestCoroutine.GetRequest(
-                new OBJRequest("https://brandonkroes.com/MMS/drawer/IKEA-Alex_drawer_white-3D.obj",
-                    "IKEA-Alex_drawer_white-3D")));
-        }
-        
-        public void GetBed()
-        {
-            var x = new OBJMTLRequest("https://brandonkroes.com/MMS/drawer/IKEA-Alex_drawer_white-3D.obj",
-                "https://brandonkroes.com/MMS/drawer/IKEA-Alex_drawer_white-3D.mtl",
-                "IKEA-Alex_drawer_white-3DMTL");
-            x.ExecuteRequest(_monoBehaviour);
-        }
-
-
-        private void GetAsset(IAssetRequest request)
-        {
+            _outstanding_requests.Add(request.GetRequestReference());
             request.ExecuteRequest(_monoBehaviour);
         }
 
@@ -52,6 +32,8 @@ namespace Script
         {
             if (!_assets.ContainsKey(request.GetRequestReference()))
             {
+                _outstanding_requests.Remove(request.GetRequestReference());
+
                 _assets.Add(request.GetRequestReference(), request);
 
                 _assets[request.GetRequestReference()].GetPayload().transform.SetParent(sceneInstantiator.transform);
@@ -61,8 +43,46 @@ namespace Script
 
                 _assets[request.GetRequestReference()].GetPayload().SetActive(true);
             }
+        }
 
-            print("instantiated");
+        public GameObject InstantiateByRequestReference(string rqref)
+        {
+            return _assets[rqref].GetPayload();
+        }
+
+        public bool IsAssetGathered(string slug)
+        {
+            
+            print(slug);
+            if (_assets.Count > 0)
+            {
+                foreach (var item in this._assets)
+                {
+                    if (item.Key == slug)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        public bool IsAssetBeingGathered(string slug)
+        {
+            print(slug);
+            if (_outstanding_requests.Count > 0)
+            {
+                foreach (var item in this._outstanding_requests)
+                {
+                    if (item == slug)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
         }
     }
 }
