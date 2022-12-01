@@ -23,7 +23,16 @@ namespace Script.Network
 
     public struct UpdateAssetPosition : NetworkMessage
     {
+        public UpdateAssetPosition(string id, Transform transform)
+        {
+            this.id = id;
+            this.position = transform.position;
+            this.rotation = transform.rotation;
+            this.scale = transform.localScale;
+        }
         public string id;
-        public Transform transform;
+        public Vector3 position;
+        public Vector3 scale;
+        public Quaternion rotation;
     }
 }

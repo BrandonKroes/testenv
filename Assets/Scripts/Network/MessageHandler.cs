@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using Mirror;
 using Script.Coroutine;
+using Script.Network;
 using UnityEngine;
 
-namespace Script.Network
+namespace Network
 {
     public class MessageHandler : MonoBehaviour
     {
@@ -27,29 +28,16 @@ namespace Script.Network
 
         private void UpdateAssetPosition(UpdateAssetPosition updateAssetPosition)
         {
-            try
+            if (GameObject.Find(updateAssetPosition.id) != null)
             {
-                var obj = GameObject.Find(updateAssetPosition.id);
-                obj.transform.position = updateAssetPosition.transform.position;
-                obj.transform.localScale = updateAssetPosition.transform.localScale;
-            }
-            catch
-            {
-                _updateAssetPositionsQueue.Add(updateAssetPosition);
+                GameObject obj = GameObject.Find(updateAssetPosition.id);
+                obj.transform.position = updateAssetPosition.position;
+                obj.transform.rotation = updateAssetPosition.rotation;
+                obj.transform.localScale = updateAssetPosition.scale;
+                Destroy(obj.GetComponent<Rigidbody>());
             }
         }
-
-        private void processQueue()
-        {
-            List<UpdateAssetPosition> oldUpdates = _updateAssetPositionsQueue;
-            _updateAssetPositionsQueue.Clear(); // Ensuring we are not endlessly appending the list.
-            
-            foreach (var updateAssetPosition in oldUpdates)
-            {
-                UpdateAssetPosition(updateAssetPosition);
-            }
-        }
-
+        
         private void MessageNewOBJTMLRequest(NewOBJMTLRequest newObjmtlRequest)
         {
             new OBJMTLRequest(newObjmtlRequest).ExecuteRequest(_monoBehaviour);

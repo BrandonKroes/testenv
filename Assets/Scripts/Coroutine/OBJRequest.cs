@@ -1,4 +1,5 @@
 using Coroutine;
+using Mirror;
 using Script.Network;
 using UnityEngine;
 
@@ -39,7 +40,7 @@ namespace Script.Coroutine
                 requestURL = url
             };
 
-            //NetworkServer.SendToAll(crq);
+            NetworkServer.SendToAll(crq);
         }
 
         public IAssetRequest.RequestType GetRequestType()

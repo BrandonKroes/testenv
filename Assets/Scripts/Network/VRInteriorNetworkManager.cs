@@ -1,4 +1,5 @@
 using Mirror;
+using Network;
 using Script.Network;
 using UnityEngine;
 
@@ -150,6 +151,7 @@ public class VRInteriorNetworkManager : NetworkManager
     /// <param name="conn">Connection from client.</param>
     public override void OnServerConnect(NetworkConnectionToClient conn)
     {
+        print("153");
     }
 
     /// <summary>
@@ -162,6 +164,7 @@ public class VRInteriorNetworkManager : NetworkManager
     /// <param name="conn">Connection from client.</param>
     public override void OnServerReady(NetworkConnectionToClient conn)
     {
+        print("153");
         base.OnServerReady(conn);
     }
 

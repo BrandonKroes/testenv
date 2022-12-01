@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using Mirror;
+using Script.Network;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -9,18 +12,17 @@ namespace Coroutine.Prefab
     {
         private List<GameObject> Children;
 
-        // Start is called before the first frame update
-        private void Start()
-        {
 
-
-        }
-
-
-        // Update is called once per frame
-        void Update()
+        private void Update()
         {
             transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
+            if (transform.hasChanged)
+            {
+                print(transform.position);
+                var uap = new UpdateAssetPosition(name, transform);
+                NetworkServer.SendToAll(uap);
+                transform.hasChanged = false;
+            }
         }
     }
 }
