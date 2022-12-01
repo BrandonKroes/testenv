@@ -1,20 +1,26 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
-public class DefaultFurniture : MonoBehaviour
+namespace Coroutine.Prefab
 {
-    // Start is called before the first frame update
-    private void Start()
+    public class DefaultFurniture : MonoBehaviour
     {
-    }
+        private List<GameObject> Children;
 
-    // Update is called once per frame
-    private void Update()
-    {
-        transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
-    }
+        // Start is called before the first frame update
+        private void Start()
+        {
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.CompareTag("Floor")) Destroy(GetComponent<Rigidbody>());
+
+        }
+
+
+        // Update is called once per frame
+        void Update()
+        {
+            transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
+        }
     }
 }

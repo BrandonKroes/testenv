@@ -66,7 +66,6 @@ public class FurnitureManager : SingletonMonoBehaviour<FurnitureManager>
         {
             foreach (var furniture in furniture_category.Value)
             {
-                print(furniture.getSlugName());
                 var button = Instantiate(submenu_prefab);
                 button.name = furniture.getSlugName();
                 button.transform.SetParent(subMenu.transform, false);
@@ -97,7 +96,7 @@ public class FurnitureManager : SingletonMonoBehaviour<FurnitureManager>
             {
                 "Beds", new List<Furniture>()
                 {
-                    new Furniture("Hopen", "https://brandonkroes.com/MMS/beds/IKEA-Hopen_Bed_160-3D.obj", s),
+                    new Furniture("Hopen", "https://brandonkroes.com/MMS/drawer/IKEA-Alex_drawer_white-3D.obj", s),
                     new Furniture("Sorum Queen Bed",
                         "https://brandonkroes.com/MMS/beds/IKEA-Sorum_Queen_Bed_Frame-3D.obj", s),
                     new Furniture("Hemnes",

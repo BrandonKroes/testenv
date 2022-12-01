@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.IO;
 using System.Text;
+using Coroutine.Prefab;
 using OBJImport;
+using Script;
+using Script.Coroutine;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace Script.Coroutine
+namespace Coroutine
 {
     // ReSharper disable once InconsistentNaming
     public class OBJMTLCoroutine : MonoBehaviour
@@ -30,23 +33,13 @@ namespace Script.Coroutine
 
             var gameObject = new OBJLoader().Load(request.memoryStreamOBJ, request.memoryStreamMTL);
             gameObject.name = request.GetAssetManagerRequestReference();
-
-            gameObject.AddComponent<Rigidbody>();
-            gameObject.AddComponent<BoxCollider>();
-
-            gameObject.AddComponent<MeshFilter>();
-            gameObject.AddComponent<MeshRenderer>();
-
-            var boxCollider = gameObject.transform.GetComponent<BoxCollider>();
-            boxCollider.center = new Vector3(0f, 0f, 0f);
-            boxCollider.size = new Vector3(100f, 55f, 100f);
-
-            var rigidbody = gameObject.transform.GetComponent<Rigidbody>();
-
+            gameObject.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
             gameObject.AddComponent<DefaultFurniture>();
+            gameObject.AddComponent<MeshFilter>();
+            gameObject.AddComponent<MeshCollider>();
 
             request.SetPayload(gameObject);
-            //AssetManager.Instance.SetAsset(request);
+            AssetManager.Instance.SetAsset(request);
         }
     }
 }
