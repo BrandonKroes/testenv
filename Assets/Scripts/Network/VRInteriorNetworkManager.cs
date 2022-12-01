@@ -202,7 +202,6 @@ public class VRInteriorNetworkManager : NetworkManager
 
     #region Client System Callbacks
 
-    public GameObject message;
     public MessageHandler messageHandler;
 
     public override void OnClientConnect()
