@@ -20,8 +20,8 @@ namespace Coroutine.Prefab
         private void Start()
         {
             _referenceScale = transform.localScale;
-            _superSmallScale = new Vector3(_referenceScale.x * 0.01f, _referenceScale.y * 0.01f,
-                _referenceScale.z * 0.01f);
+            _superSmallScale = new Vector3(_referenceScale.x * 0.1f, _referenceScale.y * 0.1f,
+                _referenceScale.z * 0.1f);
             _xrGrabInteractable = GetComponent<XRGrabInteractable>();
             _previouslySelected = false;
         }
