@@ -8,6 +8,10 @@ TagManager:
   - Teleport
   - Climbable
   - Floor
+  - Drawers
+  - Beds
+  - Wardrobes
+  - Tables
   layers:
   - Default
   - TransparentFX

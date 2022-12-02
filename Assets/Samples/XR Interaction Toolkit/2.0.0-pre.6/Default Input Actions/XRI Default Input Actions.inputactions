@@ -205,6 +205,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Menu Toggle",
+                    "type": "Button",
+                    "id": "30dcf82d-1f7f-4911-81ea-d58112b9554f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -568,6 +577,17 @@
                     "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "UI Press Value",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "13553a8c-9c5e-43c2-b184-da1dc6cf53e1",
+                    "path": "<XRController>{LeftHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Menu Toggle",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

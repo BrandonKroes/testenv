@@ -38,13 +38,8 @@ namespace Coroutine
                 gameObject.GetComponent<BoxCollider>().center = bounds.center;
                 gameObject.GetComponent<BoxCollider>().size = bounds.size;
             }
-            gameObject.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
 
-            if (request.GetURL().Contains("bed"))
-            {
-                gameObject.transform.localScale = new Vector3(0.001f, 0.001f, 0.001f);
-            }
-
+            gameObject.transform.localScale = new Vector3(0.001f, 0.001f, 0.001f);
 
 
             request.SetPayload(gameObject);

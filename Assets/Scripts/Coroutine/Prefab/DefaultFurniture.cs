@@ -18,7 +18,6 @@ namespace Coroutine.Prefab
             transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
             if (transform.hasChanged)
             {
-                print(transform.position);
                 var uap = new UpdateAssetPosition(name, transform);
                 NetworkServer.SendToAll(uap);
                 transform.hasChanged = false;

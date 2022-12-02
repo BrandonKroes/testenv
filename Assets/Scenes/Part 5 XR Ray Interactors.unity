@@ -561,8 +561,8 @@ MonoBehaviour:
     m_RotationOrder: 4
   m_ValidColorGradient:
     serializedVersion: 2
-    key0: {r: 1, g: 1, b: 1, a: 1}
-    key1: {r: 1, g: 1, b: 1, a: 1}
+    key0: {r: 0, g: 0.16342616, b: 1, a: 1}
+    key1: {r: 0, g: 0.16342616, b: 1, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
@@ -590,9 +590,9 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   m_InvalidColorGradient:
     serializedVersion: 2
-    key0: {r: 1, g: 0, b: 0, a: 1}
-    key1: {r: 1, g: 0, b: 0, a: 1}
-    key2: {r: 0, g: 0, b: 0, a: 0}
+    key0: {r: 0.54901963, g: 0.54901963, b: 0.54901963, a: 1}
+    key1: {r: 0.5409458, g: 0.54334915, b: 0.5556517, a: 1}
+    key2: {r: 0, g: 0.16342616, b: 1, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
@@ -600,7 +600,7 @@ MonoBehaviour:
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 0
     ctime1: 65535
-    ctime2: 0
+    ctime2: 65535
     ctime3: 0
     ctime4: 0
     ctime5: 0
@@ -1096,6 +1096,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Timeout: 10
   m_XROrigin: {fileID: 1836622549}
+--- !u!1 &418043742 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3598801128305774361, guid: a8050cb95bc810546b614975dcfae7af, type: 3}
+  m_PrefabInstance: {fileID: 530236795}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &530236795
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1195,6 +1200,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: WristCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3598801128858422106, guid: a8050cb95bc810546b614975dcfae7af, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3598801128858422106, guid: a8050cb95bc810546b614975dcfae7af, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5993046893410028888, guid: a8050cb95bc810546b614975dcfae7af, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 0.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8050cb95bc810546b614975dcfae7af, type: 3}
 --- !u!224 &530236796 stripped
@@ -1202,6 +1219,20 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3598801128305774358, guid: a8050cb95bc810546b614975dcfae7af, type: 3}
   m_PrefabInstance: {fileID: 530236795}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &530236802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418043742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4fb51c371e942341a51a00d62517385, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputActions: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  LeftRay: {fileID: 153174553}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1765,8 +1796,8 @@ MonoBehaviour:
     m_RotationOrder: 4
   m_ValidColorGradient:
     serializedVersion: 2
-    key0: {r: 1, g: 1, b: 1, a: 1}
-    key1: {r: 1, g: 1, b: 1, a: 1}
+    key0: {r: 0, g: 0.16342616, b: 1, a: 1}
+    key1: {r: 0, g: 0.16342616, b: 1, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
@@ -1794,8 +1825,8 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   m_InvalidColorGradient:
     serializedVersion: 2
-    key0: {r: 1, g: 0, b: 0, a: 1}
-    key1: {r: 1, g: 0, b: 0, a: 1}
+    key0: {r: 0.54901963, g: 0.54901963, b: 0.54901963, a: 1}
+    key1: {r: 0.54901963, g: 0.54901963, b: 0.54901963, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
@@ -2803,8 +2834,7 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials:
-  - {fileID: -1510312858500609777, guid: 97049786a632dcf47b759bb9fec445b1, type: 3}
+  m_Materials: []
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2842,7 +2872,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1830600712}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.02, z: 0}
+  m_LocalPosition: {x: 0, y: 0.01, z: 0}
   m_LocalScale: {x: 5, y: 1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2953,7 +2983,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0b315e33f275da5488474f0c67b4e94a, type: 2}
+  - {fileID: 2100022, guid: a20ea7771cebbda4696ef82ef45481a0, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
