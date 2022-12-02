@@ -42,8 +42,6 @@ namespace Script
 
                 _assets[request.GetRequestReference()].GetPayload().SetActive(true);
                 _assets[request.GetRequestReference()].GetPayload().AddComponent<XRGrabInteractable>();
-                _assets[request.GetRequestReference()].GetPayload().GetComponent<XRGrabInteractable>().tightenPosition =
-                    25f;
             }
         }
 

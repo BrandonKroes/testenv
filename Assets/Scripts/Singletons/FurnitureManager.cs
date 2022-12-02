@@ -65,7 +65,6 @@ public class FurnitureManager : SingletonMonoBehaviour<FurnitureManager>
         {
             foreach (var furniture in furniture_category.Value)
             {
-                print(furniture_category.Key);
                 var button = Instantiate(submenu_prefab, subMenu.transform, false);
                 button.tag = furniture_category.Key;
                 button.name = furniture.getSlugName();

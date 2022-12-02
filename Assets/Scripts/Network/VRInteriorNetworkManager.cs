@@ -151,7 +151,7 @@ public class VRInteriorNetworkManager : NetworkManager
     /// <param name="conn">Connection from client.</param>
     public override void OnServerConnect(NetworkConnectionToClient conn)
     {
-        print("153");
+        print("New connection detected : " + conn.address + ", setting up client");
     }
 
     /// <summary>
@@ -164,8 +164,8 @@ public class VRInteriorNetworkManager : NetworkManager
     /// <param name="conn">Connection from client.</param>
     public override void OnServerReady(NetworkConnectionToClient conn)
     {
-        print("153");
         base.OnServerReady(conn);
+        print("New client configured:  : " + conn.address);
     }
 
     /// <summary>
