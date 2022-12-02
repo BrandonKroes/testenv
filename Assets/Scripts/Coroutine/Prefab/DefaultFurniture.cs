@@ -12,12 +12,16 @@ namespace Coroutine.Prefab
     {
         private List<GameObject> Children;
         private Vector3 _referenceScale;
+
+        private Vector3 _superSmallScale;
         private bool _previouslySelected;
         private XRGrabInteractable _xrGrabInteractable;
 
         private void Start()
         {
             _referenceScale = transform.localScale;
+            _superSmallScale = new Vector3(_referenceScale.x * 0.01f, _referenceScale.y * 0.01f,
+                _referenceScale.z * 0.01f);
             _xrGrabInteractable = GetComponent<XRGrabInteractable>();
             _previouslySelected = false;
         }
@@ -28,7 +32,7 @@ namespace Coroutine.Prefab
 
             if (_xrGrabInteractable.isSelected)
             {
-                transform.localScale = new Vector3(0.001f, 0.001f, 0.001f);
+                transform.localScale = _superSmallScale;
                 _previouslySelected = true;
             }
             else if (_previouslySelected)
