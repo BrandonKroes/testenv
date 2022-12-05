@@ -1,8 +1,6 @@
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using Script.Coroutine;
 using Script.Generics;
-using UnityEditor.DeviceSimulation;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 

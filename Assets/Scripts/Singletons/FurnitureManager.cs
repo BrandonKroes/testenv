@@ -11,9 +11,7 @@ using Script.Generics;
 using TMPro;
 using UI;
 using Unity.XR.CoreUtils;
-using UnityEditor.UI;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit;
 
 
